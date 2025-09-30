@@ -32,6 +32,8 @@ open class PagingBorderLayoutAttributes: UICollectionViewLayoutAttributes {
                 frame.origin.y = options.menuHeight - height
             case .bottom:
                 frame.origin.y = 0
+            case .overlap:
+                frame.origin.y = options.menuHeight - height
             }
 
             frame.size.height = height

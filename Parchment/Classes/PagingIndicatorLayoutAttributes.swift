@@ -30,6 +30,8 @@ open class PagingIndicatorLayoutAttributes: UICollectionViewLayoutAttributes {
                 frame.origin.y = options.menuHeight - height - insets.bottom + insets.top
             case .bottom:
                 frame.origin.y = insets.bottom
+            case .overlap:
+                frame.origin.y = options.menuHeight - height - insets.bottom + insets.top
             }
             zIndex = index
         }
