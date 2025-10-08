@@ -36,6 +36,8 @@ open class PagingView: UIView {
         self.pageView = pageView
         if #available(iOS 26.0, *) {
             self.effectView = UIVisualEffectView(effect: UIGlassEffect(style: .clear))
+        } else {
+            self.effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
         }
         super.init(frame: .zero)
     }
@@ -71,6 +73,7 @@ open class PagingView: UIView {
         self.heightConstraint = heightConstraint
         
         effectView?.layer.cornerRadius = options.menuHeight * 0.5
+        effectView?.layer.masksToBounds = true
         
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
