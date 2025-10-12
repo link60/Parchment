@@ -38,9 +38,12 @@ open class PagingView: UIView {
             let effect = UIGlassEffect(style: .regular)
             effect.tintColor = options.effectColor
             self.effectView = UIVisualEffectView(effect: effect)
-            
         } else {
-            self.effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+            if #available(iOS 13.0, *) {
+                self.effectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
+            } else {
+                self.effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+            }
         }
         super.init(frame: .zero)
     }
