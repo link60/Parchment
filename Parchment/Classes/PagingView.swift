@@ -35,7 +35,10 @@ open class PagingView: UIView {
         self.collectionView = collectionView
         self.pageView = pageView
         if #available(iOS 26.0, *) {
-            self.effectView = UIVisualEffectView(effect: UIGlassEffect(style: .clear))
+            let effect = UIGlassEffect(style: .regular)
+            effect.tintColor = options.effectColor
+            self.effectView = UIVisualEffectView(effect: effect)
+            
         } else {
             self.effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
         }
@@ -84,8 +87,8 @@ open class PagingView: UIView {
         
         if let effectView = self.effectView {
             NSLayoutConstraint.activate([
-                effectView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-                effectView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+                effectView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+                effectView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
             ])
         }
         
