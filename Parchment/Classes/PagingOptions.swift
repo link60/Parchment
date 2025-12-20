@@ -100,6 +100,7 @@ public struct PagingOptions {
     
     /// The tint color for the effect view.
     public var effectColor: UIColor
+    public var effectStyle: UIBlurEffect.Style = .regular
     
     /// The background color for the paging contents
     /// _Default: .white

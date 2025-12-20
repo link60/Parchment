@@ -17,6 +17,10 @@ open class PagingView: UIView {
         didSet {
             heightConstraint?.constant = options.menuHeight
             collectionView.backgroundColor = options.menuBackgroundColor
+            if #available(iOS 26.0, *) {
+            } else {
+                self.effectView?.effect = UIBlurEffect(style: options.effectStyle)
+            }
         }
     }
     
@@ -39,11 +43,7 @@ open class PagingView: UIView {
             effect.tintColor = options.effectColor
             self.effectView = UIVisualEffectView(effect: effect)
         } else {
-            if #available(iOS 13.0, *) {
-                self.effectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
-            } else {
-                self.effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
-            }
+            self.effectView = UIVisualEffectView(effect: UIBlurEffect(style: options.effectStyle))
         }
         super.init(frame: .zero)
     }
